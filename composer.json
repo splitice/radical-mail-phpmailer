@@ -13,14 +13,7 @@
 	"require" : {
 		"php" : ">=5.4",
 		"splitice/radical-mail" : "dev-master",
-        "html2text/html2text": "dev-master",
         "phpmailer/phpmailer": "5.2.9"
 	},
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/splitice/html2text"
-        }
-    ],
 	"minimum-stability" : "dev"
 }

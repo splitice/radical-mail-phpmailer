@@ -56,8 +56,7 @@ class PhpMailer implements IMailHandler {
         if($message->getHtml()) {
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Body = $body;
-            $h2t = new Html2Text($body);
-            $mail->AltBody = $h2t->get_text();
+            $mail->AltBody = $message->getAltBody();
         }else{
             $mail->Body = $mail->AltBody = $body;
         }
