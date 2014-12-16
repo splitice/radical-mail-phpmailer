@@ -25,14 +25,14 @@ class PhpMailer implements IMailHandler {
         return null;
     }
     private function _getNamePart($full){
-        $name = $this->_getNamePart($full, 1);
+        $name = $this->_getPart($full, 1);
         if(!$name){
             return $full;
         }
         return $name;
     }
     private function _getEmailPart($full){
-        $name = $this->_getNamePart($full, 2);
+        $name = $this->_getPart($full, 2);
         if(!$name){
             return $full;
         }
@@ -42,7 +42,8 @@ class PhpMailer implements IMailHandler {
 	function __construct($mailer){
         $this->mailer = $mailer;
 	}
-	function send(Message $message,$body){
+	function send(Message $message){
+        $body = $message->getBody();
         $mail = $this->mailer();
         $mail->From = $this->_getEmailPart($message->getFrom());
         $mail->FromName = $this->_getNamePart($message->getFrom());
@@ -63,8 +64,10 @@ class PhpMailer implements IMailHandler {
 
         $mail->Subject = $message->getSubject();
 
-        foreach($message->getHeaders() as $header=>$value){
-            $mail->addCustomHeader($header, $value);
+        if($message->getHeaders()) {
+            foreach ($message->getHeaders() as $header => $value) {
+                $mail->addCustomHeader($header, $value);
+            }
         }
 
         return $mail->send();
