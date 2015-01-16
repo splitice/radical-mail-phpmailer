@@ -53,6 +53,14 @@ class PhpMailer implements IMailHandler {
             $mail->addReplyTo($this->_getEmailPart($message->getReplyTo()), $this->_getNamePart($message->getReplyTo()));
         }
 
+        foreach($message->getAttachments() as $key => $file){
+            if(is_numeric($key)){
+                $mail->addAttachment($file);
+            }else{
+                $mail->addAttachment($file, $key, 'base64', \PHPMailer::filenameToType($key));
+            }
+        }
+
         if($message->getHtml()) {
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Body = $body;
