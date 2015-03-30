@@ -48,6 +48,7 @@ class PhpMailer implements IMailHandler {
         $mail->From = $this->_getEmailPart($message->getFrom());
         $mail->FromName = $this->_getNamePart($message->getFrom());
         $mail->addAddress($this->_getEmailPart($message->getTo()), $this->_getNamePart($message->getTo()));     // Add a recipient
+        $mail->CharSet = 'UTF-8';
 
         if($message->getReplyTo()) {
             $mail->addReplyTo($this->_getEmailPart($message->getReplyTo()), $this->_getNamePart($message->getReplyTo()));
