@@ -67,7 +67,7 @@ class PhpMailer implements IMailHandler {
             $mail->Body = $body;
             $mail->AltBody = $message->getAltBody();
         }else{
-            $mail->Body = $mail->AltBody = $body;
+            $mail->Body = $body;
         }
 
         $mail->Subject = $message->getSubject();
