@@ -1,7 +1,6 @@
 <?php
 namespace Radical\Utility\Net\Mail\Handler;
 
-use Html2Text\Html2Text;
 use Radical\Utility\Net\Mail\Message;
 
 class PhpMailer implements IMailHandler {
