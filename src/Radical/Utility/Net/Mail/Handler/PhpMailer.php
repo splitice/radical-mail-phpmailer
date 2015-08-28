@@ -79,4 +79,7 @@ class PhpMailer implements IMailHandler {
 
         return $mail->send();
 	}
+    function getLastError(){
+        return $this->mailer()->ErrorInfo;
+    }
 }
