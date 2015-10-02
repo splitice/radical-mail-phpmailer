@@ -48,6 +48,11 @@ class PhpMailer implements IMailHandler {
         $mail->FromName = $this->_getNamePart($message->getFrom());
         $mail->addAddress($this->_getEmailPart($message->getTo()), $this->_getNamePart($message->getTo()));     // Add a recipient
         $mail->CharSet = 'UTF-8';
+        $mail->SMTPOptions = array('ssl' => array(
+            'verify_peer'       => false,
+            'verify_peer_name'  => false,
+            'allow_self_signed' => true
+        ));
 
         if($message->getReplyTo()) {
             $mail->addReplyTo($this->_getEmailPart($message->getReplyTo()), $this->_getNamePart($message->getReplyTo()));
