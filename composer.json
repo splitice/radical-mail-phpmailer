@@ -13,7 +13,7 @@
 	"require" : {
 		"php" : ">=5.4",
 		"splitice/radical-mail" : "dev-master",
-        "phpmailer/phpmailer": ">5.2.10"
+        "phpmailer/phpmailer": ">=5.2.18"
 	},
 	"minimum-stability" : "dev"
 }
